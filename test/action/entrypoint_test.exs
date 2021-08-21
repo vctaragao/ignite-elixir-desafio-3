@@ -1,20 +1,20 @@
-defmodule GenReportTest do
+defmodule Action.EntrypointTest do
   use ExUnit.Case
 
-  alias GenReport
+  alias Action.Entrypoint
   alias GenReport.Support.ReportFixture
 
   @file_name "gen_report.csv"
 
-  describe "build/1" do
+  describe "execute/1" do
     test "When passing file name return a report" do
-      response = GenReport.build(@file_name)
+      response = Entrypoint.execute(@file_name)
 
       assert response == ReportFixture.build()
     end
 
     test "When no filename was given, returns an error" do
-      response = GenReport.build()
+      response = Entrypoint.execute()
 
       assert response == {:error, "Insira o nome de um arquivo"}
     end
